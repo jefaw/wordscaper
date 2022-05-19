@@ -1,6 +1,13 @@
 
 
 TODO;
-1. get all words containing given letters
+1. get all words containing given letters (all given letters can be used once)
+		a. (optional) knwon letters in specific positions
+		b. handle duplicate letter
+		c. handle word length
+
+4. toggle word length buttons (4, 5, 6, 7), otherwise show all
+		a. make them (check boxes/radio button) instead of regular buttons
+
+Done:
 2. take the input and modify the API request
-4. toggle word length buttons (4, 5, 6, 7)
