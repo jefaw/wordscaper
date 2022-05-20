@@ -8,7 +8,9 @@ export default class FetchWords extends React.Component{
     }
     
     handleSubmit(e){
+        e.preventDefault(); //prevent page refresh on submti
         this.props.onSubmit();
+        
 
     }
     handleChange(e){
@@ -19,9 +21,12 @@ export default class FetchWords extends React.Component{
     //{this.props.words.map(word => <div>{word}</div>)}
     render(){
         return (<div>
-            <input type="text" placeholder='Search letters here' maxlength="12" onChange={this.handleChange}></input>
-            <button onClick={this.handleSubmit}>Submit</button>
-            <h3>Solutions:</h3>
+            <form>
+                <input type="text" placeholder='Search letters here' maxlength="12" onChange={this.handleChange}></input>
+                <button onClick={this.handleSubmit} type="submit">Submit</button>
+                <h3>Solutions:</h3>
+            </form>
+            
             
             {Array.from(this.props.words).map(word => {
                 if (word.length > 12) return <h3>{word}</h3>
