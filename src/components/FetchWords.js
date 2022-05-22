@@ -1,4 +1,6 @@
 import React from "react";
+import './FetchWords.css';
+
 
 export default class FetchWords extends React.Component{
     constructor(props){

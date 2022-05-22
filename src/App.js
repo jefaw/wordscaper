@@ -11,24 +11,20 @@ function App() {
   const newRequest = async() =>{ // after first render
     let w = []
     let shorterWords = new Set([]);
-    //let minLen = 4;
     let currentLen = userInput.length;
     let tempWord = userInput.slice();
     for (let i =0; i<currentLen;i++){
       shorterWords.add(tempWord.slice(0,i)+tempWord.slice(i+1))
     }
     
-    
-    //const url = "https://api.datamuse.com/words?ml=spoon&sp=*a&max=10";
     const url = "https://api.datamuse.com/words?sp=//" + userInput;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
-    
     for(let i=0;i<data.length;i++){
         if (data[i]['score'] > 200) w[i] = data[i]['word'];
         console.log(i + data[i]['word']);
     }
+
     w.push("Shorter length words:");
     shorterWords.forEach(async (word) => {
       const url = "https://api.datamuse.com/words?sp=//" + word;
@@ -42,10 +38,6 @@ function App() {
       setWords([...w])
       console.log(words);
     })
-
-
-
-
   };
   const changeInput = (newInput) => {
     setUserInput(newInput)
@@ -55,9 +47,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1> Wordscaper</h1>
-        <p> Find anagrams of same length and one length shorter</p>
+        <p> Find Anagrams!</p>
         <FetchWords onSubmit={newRequest} words={words} onChange={changeInput}/>
-        
         
       </header>
     </div>
